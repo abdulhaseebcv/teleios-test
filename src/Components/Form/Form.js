@@ -14,6 +14,8 @@ const Form = () => {
   const [newRaceModes, setNewRaceModes] = useState(false);
   const [familyFun, setFamilyFun] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +36,13 @@ const Form = () => {
     if (Object.keys(errors).length > 0) {
       setError(errors);
     } else {
-
+      
+      setName('')
+      setEmail('')
+      setWatchParties('')
+      setPrivateEvents('')
+      setNewRaceModes('')
+      setFamilyFun('')
       setError({});
 
       const interests = [];
@@ -44,6 +52,7 @@ const Form = () => {
       if (newRaceModes) interests.push('newRaceModes');
       if (familyFun) interests.push('familyFun');
 
+      setLoading(true)
       axios.post(`${process.env.REACT_APP_SERVER_API}/submit-form`, {
         name,
         email,
@@ -55,8 +64,10 @@ const Form = () => {
         .catch(error => {
           console.error('Error:', error);
           toast.error('Error submitting form. Please try again later');
-        });
-
+        })
+      . finally(() => {
+        setLoading(false)
+  });
     }
   };
 
@@ -116,7 +127,8 @@ const Form = () => {
 
           </CheckboxSection>
           {error && error.checkbox && <span>{error.checkbox}</span>}
-          <SubmitButton type='submit'>I'm In</SubmitButton>
+          <SubmitButton type='submit' disabled={loading}>I'm In</SubmitButton>
+            <span style={{color:'#fff'}}>{loading && 'Sending...'}</span>
         </form>
       </Wrapper>
       <ToastContainer />
