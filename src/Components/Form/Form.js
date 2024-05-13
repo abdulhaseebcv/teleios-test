@@ -128,7 +128,7 @@ const Form = () => {
           </CheckboxSection>
           {error && error.checkbox && <span>{error.checkbox}</span>}
           <SubmitButton type='submit' disabled={loading}>I'm In</SubmitButton>
-            <span style={{color:'#fff'}}>{loading && 'Sending...'}</span>
+            <span style={{color:'#fff',textAlign:'center'}}>{loading && 'Sending...'}</span>
         </form>
       </Wrapper>
       <ToastContainer />
