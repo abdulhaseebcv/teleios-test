@@ -44,7 +44,7 @@ const Form = () => {
       if (newRaceModes) interests.push('newRaceModes');
       if (familyFun) interests.push('familyFun');
 
-      axios.post('http://localhost:5000/submit-form', {
+      axios.post(`${process.env.REACT_APP_SERVER_API}/submit-form`, {
         name,
         email,
         interests
