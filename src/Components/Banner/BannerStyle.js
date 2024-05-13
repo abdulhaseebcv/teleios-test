@@ -17,6 +17,7 @@ position: relative;
    height: 150px;
    width: 100%;
    bottom: 0;
+   z-index:1;
    background: linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%);
 }
 
@@ -43,6 +44,11 @@ p{
    @media (max-width:850px) {
       p{
          width: 60%;
+      }
+   }
+   @media (max-width:500px) {
+      p{
+         width: 75%;
       }
    }
 `;
@@ -72,6 +78,7 @@ font-size: clamp(10px,1.07vw,16px);
 text-decoration: none;
 cursor: pointer;
 transition: .2s ease-in-out;
+z-index:2;
 
 &:hover{
     background: #ffffff;
