@@ -54,10 +54,11 @@ display: flex;
         height: 100vh;
         background-color: rgb(26, 12, 40);;
         position: absolute;
-        right: 0;
+        right: ${({ isToggled }) => (isToggled ? '250px' : '0')};;
         top: 62px;
         padding: 3% 0 0 3%;
         justify-content: flex-start;
+        transition: right 0.3s ease;
 
         hr{
           display: block;
